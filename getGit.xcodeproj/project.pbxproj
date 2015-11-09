@@ -14,6 +14,7 @@
 		900F14E31BF1473300A2E670 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 900F14E11BF1473300A2E670 /* LaunchScreen.storyboard */; };
 		900F14EE1BF1473400A2E670 /* getGitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900F14ED1BF1473400A2E670 /* getGitTests.swift */; };
 		900F14F91BF1473400A2E670 /* getGitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900F14F81BF1473400A2E670 /* getGitUITests.swift */; };
+		900F15071BF1581700A2E670 /* OAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900F15061BF1581700A2E670 /* OAuthClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		900F14F41BF1473400A2E670 /* getGitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = getGitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		900F14F81BF1473400A2E670 /* getGitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getGitUITests.swift; sourceTree = "<group>"; };
 		900F14FA1BF1473400A2E670 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		900F15061BF1581700A2E670 /* OAuthClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				900F14D81BF1473300A2E670 /* AppDelegate.swift */,
 				900F14DA1BF1473300A2E670 /* ViewController.swift */,
+				900F15061BF1581700A2E670 /* OAuthClient.swift */,
 				900F14DC1BF1473300A2E670 /* Main.storyboard */,
 				900F14DF1BF1473300A2E670 /* Assets.xcassets */,
 				900F14E11BF1473300A2E670 /* LaunchScreen.storyboard */,
@@ -256,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				900F15071BF1581700A2E670 /* OAuthClient.swift in Sources */,
 				900F14DB1BF1473300A2E670 /* ViewController.swift in Sources */,
 				900F14D91BF1473300A2E670 /* AppDelegate.swift in Sources */,
 			);
@@ -486,6 +490,7 @@
 				900F14FF1BF1473400A2E670 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		900F15001BF1473400A2E670 /* Build configuration list for PBXNativeTarget "getGitTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +499,7 @@
 				900F15021BF1473400A2E670 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		900F15031BF1473400A2E670 /* Build configuration list for PBXNativeTarget "getGitUITests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +508,7 @@
 				900F15051BF1473400A2E670 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

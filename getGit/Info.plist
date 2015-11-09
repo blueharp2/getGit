@@ -25,7 +25,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>getGit</string>
+				<string>Lindsey-Boggio.getGit</string>
 			</array>
 		</dict>
 	</array>
