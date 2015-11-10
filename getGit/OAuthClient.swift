@@ -17,9 +17,11 @@ class OAuthClient{
     
     let githubClientID = "679d7f76b24d05b2cc6b"
     let githugClientSecret = "f76e725b0c83af0556b1495aaa5ead475e043461"
+    static let shared = OAuthClient()
     
     func oauthRequestWith(){
-        guard let requestURL = NSURL(string: "\(OAuthBaseURLString)authorize?client_id =\(self.githubClientID)") else {return}
+        guard let requestURLClientID = NSURL(string: "\(OAuthBaseURLString)authorize?client_id =\(self.githubClientID)&scope=user,repo)") else {return}
+        
         
         UIApplication.sharedApplication().openURL(requestURL)
         
