@@ -10,8 +10,19 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
+    @IBAction func gitLogInButton(sender: UIButton) {
+      OAuthClient.shared.requestGithubAccess()
+    }
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        OAuthClient.shared.searchForRepo("gramCracker")
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 

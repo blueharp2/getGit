@@ -23,6 +23,9 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Log In"/>
+                                <connections>
+                                    <action selector="gitLogInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="s6B-st-OW3"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>
