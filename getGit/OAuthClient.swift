@@ -21,25 +21,25 @@ class OAuthClient{
     static let shared = OAuthClient()
     
     func requestGithubAccess() {
-        guard let requestURL = NSURL(string: "\(OAuthBaseURLString)authorize?client_id=\(self.githubClientID)&redirect_uri=lindsey-boggio.getgit://&scope=user,repo") else {return}
+        guard let requestURL = NSURL(string: "\(OAuthBaseURLString)authorize?client_id=\(self.githubClientID)&scope=user,repo") else {return}
         
         UIApplication.sharedApplication().openURL(requestURL)
     }
     
     func exchangeCodeInURL(codeURL : NSURL) {
         if let code = codeURL.query {
-            let request = NSMutableURLRequest(URL: NSURL(string: "\(OAuthBaseURLString)access_token?(code)&client_id=\(githubClientID)&client_secret=\(githugClientSecret)")!)
+            let request = NSMutableURLRequest(URL: NSURL(string: "\(OAuthBaseURLString)access_token?\(code)&client_id=\(githubClientID)&client_secret=\(githugClientSecret)")!)
             
             
             request.HTTPMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Accept")
             
             NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
-                if let httpResponse = response as? NSHTTPURLResponse{
-                    var jsonError: NSError?
-                    if let data = data {
-                        self.jsonAutorization(data)
-
+                if let httpResponse = response as? NSHTTPURLResponse {
+                    if httpResponse.statusCode == 200 && data != nil {
+                        if let data = data {
+                            self.jsonAutorization(data)
+                        }
                     }
                 }
         
@@ -58,17 +58,27 @@ class OAuthClient{
     
     func saveToken(token: String) {
         NSUserDefaults.standardUserDefaults().setObject(token, forKey: "gitHubToken")
+        NSUserDefaults.standardUserDefaults().synchronize()
     }
     
     func searchForRepo(searchFor: String){
-        //if let code = codeURL.query {
-            let searchRequest = NSMutableURLRequest(URL: NSURL(string: "https://api.github.com/search/repositories?q=\(searchFor)")!)
         
+        // 1. Check if you have a token.
+        // 2. Construct the url with token + q=term
+        // 3. Create NSMutableURLRequest
+        // 4. Set application/json header field for header field "Accept"
+        // 5. Make the call using NSURLSession.
+        // 6. Convert data to JSON
+        // 7. Print out the JSON to make sure everything works.
+        
+        let searchRequest = NSMutableURLRequest(URL: NSURL(string: "https://api.github.com/search/repositories?q=\(searchFor)")!)
+        searchRequest.setValue("application/json", forHTTPHeaderField: "Accept")
         
         NSURLSession.sharedSession().dataTaskWithRequest(searchRequest) { (data, response, error) -> Void in
+            
             print(response)
-        }
-        
+            
+            }.resume()
     }
     
     

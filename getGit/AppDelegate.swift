@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        return true
 //    }
     func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
-        print("\(url)")
+        OAuthClient.shared.exchangeCodeInURL(url)
         return true
     }
 
