@@ -12,7 +12,7 @@ class ViewController: UIViewController {
 
     
     @IBAction func gitLogInButton(sender: UIButton) {
-        
+      OAuthClient.shared.requestGithubAccess()
     }
     
     
