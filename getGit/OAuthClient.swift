@@ -47,24 +47,33 @@ class OAuthClient{
         }
     }
 
-    func jsonAutorization(data: NSData) -> String? {
+    func jsonAutorization(data: NSData){
         do{
             if let rootObject = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? [String: AnyObject], token = rootObject["access_token"] as? String {
                 print(token)
-                return token
-                //save and handle the token
-                //                        func accessToken() throws -> String {
-                //                            guard let accessToken = NSUserDefaults.standardUserDefaults().stringForKey(kAccessToken) else { throw ("You don't have access token saved")
-                //                        }
-                //
-                //                    func saveAccessTokenToUserDefaults(accessToken: String) -> Bool{
-                //                        NSUserDefaults.standardUserDefaults().setObject(accessToken, forKey: kAccessTokenKey)
-                //                        return NSUserDefaults.standardUserDefaults().synchronize()
+                saveToken(token)
             }
         } catch {}
-        return nil
     }
-
+    
+    func saveToken(token: String) {
+        NSUserDefaults.standardUserDefaults().setObject(token, forKey: "gitHubToken")
+    }
+    
+    func searchForRepo(searchFor: String){
+        //if let code = codeURL.query {
+            let searchRequest = NSMutableURLRequest(URL: NSURL(string: "https://api.github.com/search/repositories?q=\(searchFor)")!)
+        
+        
+        NSURLSession.sharedSession().dataTaskWithRequest(searchRequest) { (data, response, error) -> Void in
+            print(response)
+        }
+        
+    }
+    
+    
+    
+    
 //Once you have your access token you can start making requests to the Service. All you have to do is add the token in the HTML Header of each request you make.
 //let request = NSMutableURLRequest(URL: NSURL(string: finalURL)!)request.setValue(token, forHTTPHeaderFiled:"Authorization");
 }
