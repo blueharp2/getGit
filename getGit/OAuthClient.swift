@@ -6,7 +6,7 @@
 //  Copyright © 2015 Lindsey Boggio. All rights reserved.
 //used SamWilskey.com/swift-oauth/
 //
-//Authorization Call Back on Git: Lindsey-Boggio.getGit://oauth
+
 
 import UIKit
 
@@ -61,8 +61,11 @@ class OAuthClient{
         NSUserDefaults.standardUserDefaults().synchronize()
     }
     
+    func token() ->String? {
+        return NSUserDefaults.standardUserDefaults().stringForKey("gitHubToken")
+    }
+    
     func searchForRepo(searchFor: String){
-        
         // 1. Check if you have a token.
         // 2. Construct the url with token + q=term
         // 3. Create NSMutableURLRequest
@@ -71,14 +74,32 @@ class OAuthClient{
         // 6. Convert data to JSON
         // 7. Print out the JSON to make sure everything works.
         
-        let searchRequest = NSMutableURLRequest(URL: NSURL(string: "https://api.github.com/search/repositories?q=\(searchFor)")!)
-        searchRequest.setValue("application/json", forHTTPHeaderField: "Accept")
+        if let token = OAuthClient.shared.token() {
+            
+            
+            let searchRequest = NSMutableURLRequest(URL: NSURL(string: "https://api.github.com/search/repositories?q=\(searchFor)")!)
+            
+            searchRequest.setValue("application/json", forHTTPHeaderField: "Accept")
+            
+            NSURLSession.sharedSession().dataTaskWithRequest(searchRequest) { (data, response, error) -> Void in
+                
+                if let data = data {
+                    
+                    let json = try! NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! [String : AnyObject]
+                    
+                    let items = json["items"] as! [[String : AnyObject]]
+                    
+                    for item in items {
+                        print(item)
+                        
+                    }
+                    
+                }
+                
+                }.resume()
+            
+        }
         
-        NSURLSession.sharedSession().dataTaskWithRequest(searchRequest) { (data, response, error) -> Void in
-            
-            print(response)
-            
-            }.resume()
     }
     
     
@@ -86,6 +107,10 @@ class OAuthClient{
     
 //Once you have your access token you can start making requests to the Service. All you have to do is add the token in the HTML Header of each request you make.
 //let request = NSMutableURLRequest(URL: NSURL(string: finalURL)!)request.setValue(token, forHTTPHeaderFiled:"Authorization");
+    
+    //let searchRepo = NSMutableURLRequest(URL: NSURL(string: "https://api.github.com/user/repos/access_token?\(token)")!)
+
+    
 }
 
 

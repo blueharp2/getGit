@@ -20,6 +20,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        OAuthClient.shared.searchForRepo("gramCracker")
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
