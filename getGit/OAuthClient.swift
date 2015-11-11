@@ -57,12 +57,18 @@ class OAuthClient{
     }
     
     func saveToken(token: String) {
-        NSUserDefaults.standardUserDefaults().setObject(token, forKey: "gitHubToken")
-        NSUserDefaults.standardUserDefaults().synchronize()
+        KeychainService.save(token)
+        
+        
+//        NSUserDefaults.standardUserDefaults().setObject(token, forKey: "gitHubToken")
+//        NSUserDefaults.standardUserDefaults().synchronize()
     }
     
     func token() ->String? {
-        return NSUserDefaults.standardUserDefaults().stringForKey("gitHubToken")
+        KeychainService.loadFromKeychain()
+        return token()
+        
+//        return NSUserDefaults.standardUserDefaults().stringForKey("gitHubToken")
     }
     
     func searchForRepo(searchFor: String){
