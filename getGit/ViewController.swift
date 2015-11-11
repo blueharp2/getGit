@@ -18,8 +18,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        OAuthClient.shared.searchForRepo("gramCracker")
-        
+        GitHubService.searchForRepo("gramCracker")
         
     }
 
