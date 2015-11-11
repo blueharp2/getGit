@@ -14,10 +14,10 @@ class User {
     let login: String
     let location: String
     let url: String
-    let createdAt: String
+    let createdAt: NSDate
     let followers: String
     
-    init(name: String, login: String, location: String, url: String, createdAt: String, followers: String){
+    init(name: String, login: String, location: String, url: String, createdAt: NSDate, followers: String){
         self.name = name
         self.login = login
         self.location = location
