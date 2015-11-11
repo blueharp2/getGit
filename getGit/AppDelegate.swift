@@ -31,9 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func checkLogInStatus(){
         do{
-            let token = try OAuthClient.shared.token()
+            if let token = try OAuthClient.shared.token(){
             print(token)
-            
+            }
         } catch _ {}//{self.presentLogInViewController}
     }
 

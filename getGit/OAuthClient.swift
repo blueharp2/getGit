@@ -64,9 +64,9 @@ class OAuthClient{
 //        NSUserDefaults.standardUserDefaults().synchronize()
     }
     
-    func token() ->String? {
-        KeychainService.loadFromKeychain()
-        return token()
+    func token() ->NSString? {
+       return KeychainService.loadFromKeychain()
+        
         
 //        return NSUserDefaults.standardUserDefaults().stringForKey("gitHubToken")
     }
