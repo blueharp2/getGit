@@ -37,10 +37,38 @@ class GitHubService{
         }
     }
     
+    
     class func GETRepositories(completion: (success: Bool, json: [AnyObject]) -> ()) {
         do {
-            let token = try OAuthClient.shared.token()
+            if let token = try OAuthClient.shared.token(){
+            print(token)
             guard let url = NSURL(string: "https://api.github.com/user/repos?access_token=\(token)") else {return}
+            
+            let request = NSMutableURLRequest(URL: url)
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+            
+            NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
+                if let error = error{
+                    print(error)
+                }
+                if let data = data {
+                    do{
+                        if let json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as? [[String : AnyObject]]{
+                        print(json)
+                        }
+                    } catch _ {}
+                }
+            }).resume()
+            }
+        } catch _ {}
+    }
+    
+    
+    class func GETUser(completion: (success: Bool, json: [AnyObject]) -> ()) {
+        do {
+            if let token = try OAuthClient.shared.token(){
+                print(token)
+            guard let url = NSURL(string: "https://api.github.com/users/:username?access_token=\(token)") else {return}
             
             let request = NSMutableURLRequest(URL: url)
             request.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -56,12 +84,16 @@ class GitHubService{
                     } catch _ {}
                 }
             }).resume()
+            }
         } catch _ {}
     }
-    
+
 }
 
-//let searchRepo = NSMutableURLRequest(URL: NSURL(string: !)
+
+
+
+
 
 // 1. Check if you have a token.
 // 2. Construct the url with token + q=term
