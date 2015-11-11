@@ -40,7 +40,7 @@ class GitHubService{
     class func GETRepositories(completion: (success: Bool, json: [AnyObject]) -> ()) {
         do {
             let token = try OAuthClient.shared.token()
-            guard let url = NSURL(string: "https://api.github.com/user/repos/access_token?\(token)") else {return}
+            guard let url = NSURL(string: "https://api.github.com/user/repos?access_token=\(token)") else {return}
             
             let request = NSMutableURLRequest(URL: url)
             request.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -58,8 +58,6 @@ class GitHubService{
             }).resume()
         } catch _ {}
     }
-    
-    
     
 }
 

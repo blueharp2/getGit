@@ -19,7 +19,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         GitHubService.searchForRepo("gramCracker")
-        
+//        GitHubService.GETRepositories{(sucess, json) -> Void in
+//            
+//        }
     }
 
     override func didReceiveMemoryWarning() {
