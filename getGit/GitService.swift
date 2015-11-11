@@ -53,7 +53,7 @@ class GitHubService{
                 }
                 if let data = data {
                     do{
-                        if let json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as? [[String : AnyObject]]{
+                        if let json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as? [String : AnyObject]{
                         print(json)
                         }
                     } catch _ {}
@@ -68,7 +68,8 @@ class GitHubService{
         do {
             if let token = try OAuthClient.shared.token(){
                 print(token)
-            guard let url = NSURL(string: "https://api.github.com/users/:username?access_token=\(token)") else {return}
+            guard let url = NSURL(string: "https://api.github.com/user?access_token=\(token)") else {return}
+                print(url)
             
             let request = NSMutableURLRequest(URL: url)
             request.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -79,8 +80,9 @@ class GitHubService{
                 }
                 if let data = data {
                     do{
-                        let json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers)
+                        if let json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as? [String: AnyObject]{
                         print(json)
+                        }
                     } catch _ {}
                 }
             }).resume()

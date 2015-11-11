@@ -17,6 +17,7 @@
 		900F15071BF1581700A2E670 /* OAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900F15061BF1581700A2E670 /* OAuthClient.swift */; };
 		90114C521BF2EFD30097FF73 /* GitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90114C511BF2EFD30097FF73 /* GitService.swift */; };
 		90C369B61BF3F0E200B1844C /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C369B51BF3F0E200B1844C /* Owner.swift */; };
+		90C369B91BF3F3E300B1844C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C369B81BF3F3E300B1844C /* User.swift */; };
 		90C9308B1BF2C6960048BA30 /* KeyChainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C9308A1BF2C6960048BA30 /* KeyChainService.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		900F15061BF1581700A2E670 /* OAuthClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthClient.swift; sourceTree = "<group>"; };
 		90114C511BF2EFD30097FF73 /* GitService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitService.swift; sourceTree = "<group>"; };
 		90C369B51BF3F0E200B1844C /* Owner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
+		90C369B81BF3F3E300B1844C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		90C9308A1BF2C6960048BA30 /* KeyChainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyChainService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				90C369B51BF3F0E200B1844C /* Owner.swift */,
+				90C369B81BF3F3E300B1844C /* User.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				90C9308B1BF2C6960048BA30 /* KeyChainService.swift in Sources */,
 				900F14DB1BF1473300A2E670 /* ViewController.swift in Sources */,
 				900F14D91BF1473300A2E670 /* AppDelegate.swift in Sources */,
+				90C369B91BF3F3E300B1844C /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
