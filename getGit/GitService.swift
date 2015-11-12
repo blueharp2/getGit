@@ -38,7 +38,7 @@ class GitHubService{
     }
     
     
-    class func GETRepositories(completion: (success: Bool, json: [AnyObject]) -> ()) {
+    class func GETRepositories(completion: (success: Bool, repo: [Repository]) -> ()) {
         do {
             if let token = try OAuthClient.shared.token(){
             print(token)
@@ -52,11 +52,17 @@ class GitHubService{
                     print(error)
                 }
                 if let data = data {
-                    do{
-                        if let json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as? [String : AnyObject]{
-                        print(json)
-                        }
-                    } catch _ {}
+                    
+                    if let allRepositories = GitJsonParseService.RepositoryFromGitJSONData(data){
+                    NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                        completion(success: true, repo: allRepositories)
+                    })
+                    }
+//                    do{
+//                        if let json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as? [String : AnyObject]{
+//                        print(json)
+//                        }
+//                    } catch _ {}
                 }
             }).resume()
             }

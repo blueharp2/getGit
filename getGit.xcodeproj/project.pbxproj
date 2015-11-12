@@ -16,6 +16,7 @@
 		900F14F91BF1473400A2E670 /* getGitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900F14F81BF1473400A2E670 /* getGitUITests.swift */; };
 		900F15071BF1581700A2E670 /* OAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900F15061BF1581700A2E670 /* OAuthClient.swift */; };
 		90114C521BF2EFD30097FF73 /* GitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90114C511BF2EFD30097FF73 /* GitService.swift */; };
+		9075B4321BF4126F006D7B17 /* GitJsonParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9075B4311BF4126F006D7B17 /* GitJsonParse.swift */; };
 		90C369B61BF3F0E200B1844C /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C369B51BF3F0E200B1844C /* Owner.swift */; };
 		90C369B91BF3F3E300B1844C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C369B81BF3F3E300B1844C /* User.swift */; };
 		90C369BB1BF4072600B1844C /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C369BA1BF4072600B1844C /* Repository.swift */; };
@@ -55,6 +56,7 @@
 		900F14FA1BF1473400A2E670 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		900F15061BF1581700A2E670 /* OAuthClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthClient.swift; sourceTree = "<group>"; };
 		90114C511BF2EFD30097FF73 /* GitService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitService.swift; sourceTree = "<group>"; };
+		9075B4311BF4126F006D7B17 /* GitJsonParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitJsonParse.swift; sourceTree = "<group>"; };
 		90C369B51BF3F0E200B1844C /* Owner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
 		90C369B81BF3F3E300B1844C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		90C369BA1BF4072600B1844C /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				900F14DA1BF1473300A2E670 /* ViewController.swift */,
+				9075B4311BF4126F006D7B17 /* GitJsonParse.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9075B4321BF4126F006D7B17 /* GitJsonParse.swift in Sources */,
 				900F15071BF1581700A2E670 /* OAuthClient.swift in Sources */,
 				90C369B61BF3F0E200B1844C /* Owner.swift in Sources */,
 				90114C521BF2EFD30097FF73 /* GitService.swift in Sources */,
