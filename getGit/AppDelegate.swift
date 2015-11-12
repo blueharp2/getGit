@@ -12,7 +12,8 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    var oauthViewController: OAuthViewController?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -39,7 +40,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 func presentLogInViewController(){
-    
+    if let ViewController = self.window?.rootViewController as? ViewController, storyboard = ViewController.storyboard {
+        if let oauthViewController = storyboard.instantiateViewControllerWithIdentifier(OAuthViewController.identifier()) as? OAuthViewController{
+            ViewController.addChildViewController(oauthViewController)
+            ViewController.view.addSubview(oauthViewController.view)
+            oauthViewController.didMoveToParentViewController(ViewController)
+            oauthViewController.oauthCompletionHandler = ({
+                UIView.animateWithDuration(3.0, delay: 1.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+                    oauthViewController.view.alpha = 0.0
+                    }, completion: { (finished) -> Void in
+                        oauthViewController.view.removeFromSuperview()
+                        oauthViewController.removeFromParentViewController()
+                     
+                        //                      Make the call for repositories.
+                        //                      GitHubService.GETRepositories { (success, repo) -> () in
+                        //                        print(repo)
+                        //                        }
+                        
+                    ViewController.update()
+                    })
+                })
+            self.oauthViewController = oauthViewController
+        }
+    }
     
 }
     func applicationWillResignActive(application: UIApplication) {

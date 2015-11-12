@@ -26,7 +26,7 @@ class OAuthClient{
         UIApplication.sharedApplication().openURL(requestURL)
     }
     
-    func exchangeCodeInURL(codeURL : NSURL) {
+    func exchangeCodeInURL(codeURL : NSURL, completion: () -> ()) {
         if let code = codeURL.query {
             let request = NSMutableURLRequest(URL: NSURL(string: "\(OAuthBaseURLString)access_token?\(code)&client_id=\(githubClientID)&client_secret=\(githugClientSecret)")!)
             
@@ -39,6 +39,7 @@ class OAuthClient{
                     if httpResponse.statusCode == 200 && data != nil {
                         if let data = data {
                             self.jsonAutorization(data)
+                            completion()
                         }
                     }
                 }
@@ -58,18 +59,11 @@ class OAuthClient{
     
     func saveToken(token: String) {
         KeychainService.save(token)
-        
-        
-//        NSUserDefaults.standardUserDefaults().setObject(token, forKey: "gitHubToken")
-//        NSUserDefaults.standardUserDefaults().synchronize()
-    }
+        }
     
     func token() ->NSString? {
        return KeychainService.loadFromKeychain()
-        
-        
-//        return NSUserDefaults.standardUserDefaults().stringForKey("gitHubToken")
-    }
+            }
     
     
 //Once you have your access token you can start making requests to the Service. All you have to do is add the token in the HTML Header of each request you make.

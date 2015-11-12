@@ -11,11 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     
-    @IBAction func gitLogInButton(sender: UIButton) {
-      OAuthClient.shared.requestGithubAccess()
-    }
-    
-    
+//       
     override func viewDidLoad() {
         super.viewDidLoad()
          GitHubService.createRepositoryWithName("Beep")
