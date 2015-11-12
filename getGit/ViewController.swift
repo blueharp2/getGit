@@ -18,10 +18,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+         GitHubService.createRepositoryWithName("Beep")
        // GitHubService.searchForRepo("gramCracker")
-       GitHubService.GETRepositories { (success, repo) -> () in
-        print(repo)
-        }
+//       GitHubService.GETRepositories { (success, repo) -> () in
+//        print(repo)
+//        }
 //        GitHubService.GETUser { (success, json) -> () in
 //    
 //        }
