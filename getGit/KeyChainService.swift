@@ -27,6 +27,7 @@ class KeychainService: NSObject {
     
     // Add the new keychain item
     let status: OSStatus = SecItemAdd(keychainQuery, nil)
+    print("status is \(status.description)")
   }
   
    class func loadFromKeychain() -> NSString? {
@@ -45,10 +46,12 @@ class KeychainService: NSObject {
     
     if let retainedData = dataTypeRef as? NSData {
       contentsOfKeychain = NSString(data: retainedData, encoding: NSUTF8StringEncoding)
+        return contentsOfKeychain
     } else {
-      print("Nothing was retrieved from the keychain. Status code \(status)")
+        print("Nothing was retrieved from the keychain. Status code \(status)")
+        return nil
     }
     //dataTypeRef?.release()
-    return contentsOfKeychain
+
   }
 }

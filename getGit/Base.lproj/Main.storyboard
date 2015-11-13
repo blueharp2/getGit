@@ -21,6 +21,9 @@
                                 <rect key="frame" x="279" y="285" width="42" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Log In"/>
+                                <connections>
+                                    <action selector="gitLogInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ag3-EC-9tP"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>

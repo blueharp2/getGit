@@ -35,41 +35,74 @@ class OAuthClient{
             request.setValue("application/json", forHTTPHeaderField: "Accept")
             
             NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
-                if let httpResponse = response as? NSHTTPURLResponse {
-                    if httpResponse.statusCode == 200 && data != nil {
-                        if let data = data {
-                            self.jsonAutorization(data)
+                NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                    if let httpResponse = response as? NSHTTPURLResponse {
+                        if httpResponse.statusCode == 200 && data != nil {
+                            if let data = data {
+                                self.jsonAutorization(data, completion: { (success, token) -> () in
+                                    if success {
+                                        // doo success suff aka. save token
+                                        if let token = token {
+                                            self.saveToken(token, completion: { (success) -> () in
+                                                return completion()
+                                            })
+                                        }
+                                        
+                                    } else {
+                                        completion()
+                                        return
+                                    }
+                                })
+                            } else {
+                                completion()
+                                return
+                            }
+                        } else {
                             completion()
+                            return
                         }
+                    } else {
+                        completion()
+                        return
                     }
-                }
-        
+                })
+                
             }).resume()
         }
     }
-
-    func jsonAutorization(data: NSData){
+    
+    func jsonAutorization(data: NSData, completion: (success: Bool, token: String?) -> () ) {
         do{
             if let rootObject = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? [String: AnyObject], token = rootObject["access_token"] as? String {
-                print(token)
-                saveToken(token)
+                completion(success: true, token: token)
+                return
+            } else {
+                completion(success: false, token: nil)
+                return
             }
-        } catch {}
+        } catch {
+            completion(success: false, token: nil)
+            return
+        }
     }
     
-    func saveToken(token: String) {
+    func saveToken(token: String, completion: (success: Bool) -> () ) {
         KeychainService.save(token)
-        }
+        completion(success: true)
+        return
+        
+        
+    }
     
     func token() ->NSString? {
-       return KeychainService.loadFromKeychain()
-            }
+        return KeychainService.loadFromKeychain()
+    }
     
     
-//Once you have your access token you can start making requests to the Service. All you have to do is add the token in the HTML Header of each request you make.
-//let request = NSMutableURLRequest(URL: NSURL(string: finalURL)!)request.setValue(token, forHTTPHeaderFiled:"Authorization");
+    //Once you have your access token you can start making requests to the Service. All you have to do is add the token in the HTML Header of each request you make.
+    //let request = NSMutableURLRequest(URL: NSURL(string: finalURL)!)request.setValue(token, forHTTPHeaderFiled:"Authorization");
     
-       
+    
 }
 
 

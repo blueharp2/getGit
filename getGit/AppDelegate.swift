@@ -17,47 +17,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        self.checkLogInStatus()
+
         return true
     }
     
-//    func application(application: UIApplication, handleOpenURL url : NSURL) -> Bool{
-//        print(url)
+//    func application(application: UIApplication, handleOpenURL url : NSURL) -> Bool {
+//
 //        return true
 //    }
+//    
     func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
-        OAuthClient.shared.exchangeCodeInURL(url)
-        checkLogInStatus()
+        
+        
+        
+        if let oauthViewController = oauthViewController, oauthCompletionHandler = oauthViewController.oauthCompletionHandler {
+            print("success going to call exchangeCodeinURL")
+            OAuthClient.shared.exchangeCodeInURL(url, completion: oauthCompletionHandler)
+        }
+        
+        
         return true
+        
     }
     
     func checkLogInStatus(){
-        do{
-            if let token = try OAuthClient.shared.token(){
-            print(token)
-            }
-        } catch _ {}//{self.presentLogInViewController}
+        if let token = OAuthClient.shared.token() {
+
+        } else {
+            self.presentLogInViewController()
+        }
     }
 
 
 func presentLogInViewController(){
+    
     if let ViewController = self.window?.rootViewController as? ViewController, storyboard = ViewController.storyboard {
         if let oauthViewController = storyboard.instantiateViewControllerWithIdentifier(OAuthViewController.identifier()) as? OAuthViewController{
             ViewController.addChildViewController(oauthViewController)
             ViewController.view.addSubview(oauthViewController.view)
             oauthViewController.didMoveToParentViewController(ViewController)
             oauthViewController.oauthCompletionHandler = ({
-                UIView.animateWithDuration(3.0, delay: 1.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+                print("calling the completion Handler")
+                UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
                     oauthViewController.view.alpha = 0.0
                     }, completion: { (finished) -> Void in
                         oauthViewController.view.removeFromSuperview()
                         oauthViewController.removeFromParentViewController()
-                     
-                        //                      Make the call for repositories.
-                        //                      GitHubService.GETRepositories { (success, repo) -> () in
-                        //                        print(repo)
-                        //                        }
-                        
-                    ViewController.update()
+                        print("called the animation")
                     })
                 })
             self.oauthViewController = oauthViewController

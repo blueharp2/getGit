@@ -18,10 +18,10 @@ class OAuthViewController: UIViewController {
         return "OAuthViewController"
     }
     
-    //@IBAction func gitLogInButton(sender: UIButton) {
-        //      OAuthClient.shared.requestGithubAccess()
-        //    }
-        //    
+    @IBAction func gitLogInButton(sender: UIButton) {
+              OAuthClient.shared.requestGithubAccess()
+            }
+            
 
     
 }
