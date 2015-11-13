@@ -63,7 +63,7 @@ class GitHubService{
     }
     
     
-    class func GETUser(completion: (success: Bool, json: [AnyObject]) -> ()) {
+    class func GETUser(completion: (success: Bool, json: NSData?) -> ()) {
         do {
             guard let token = OAuthClient.shared.token() else {return}
             print(token)
@@ -78,11 +78,10 @@ class GitHubService{
                     print(error)
                 }
                 if let data = data {
-                    do{
-                        if let json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as? [String: AnyObject]{
-                            print(json)
-                        }
-                    } catch _ {}
+                    completion(success: true, json: data)
+                    
+                }else{
+                    completion(success: false, json: nil)
                 }
             }).resume()
         }

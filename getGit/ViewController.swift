@@ -23,9 +23,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
          //GitHubService.createRepositoryWithName("Beep")
        // GitHubService.searchForRepo("gramCracker")
-        //GitHubService.GETUser { (success, json) -> () in
-        //        }
-        
+               
         
        GitHubService.GETRepositories { (success, repo) -> () in
         print(repo)

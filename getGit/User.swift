@@ -15,14 +15,20 @@ class User {
     let location: String
     let url: String
     let createdAt: String
-    let followers: String
+    let followers: Int
+    let userImage: String
     
-    init(name: String, login: String, location: String, url: String, createdAt: String, followers: String){
+    //var image: UIImage?
+    
+    
+    
+    init(name: String, login: String, location: String, url: String, createdAt: String, followers: Int, userImage: String){
         self.name = name
         self.login = login
         self.location = location
         self.url = url
         self.createdAt = createdAt
         self.followers = followers
+        self.userImage = userImage
     }
 }

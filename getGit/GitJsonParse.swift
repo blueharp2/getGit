@@ -48,4 +48,45 @@ class GitJsonParseService{
                 }
         return nil
     }
+    
+    class func UserFromGitJSONData(jsonData: NSData) -> User? {
+        do{
+            if let rootObject = try NSJSONSerialization.JSONObjectWithData(jsonData, options: .MutableContainers) as? [String: AnyObject]{
+                
+                
+                    if let name = rootObject["name"] as? String,
+                    login = rootObject["login"]as? String,
+                    location = rootObject["location"]as? String,
+                    url = rootObject["url"]as? String,
+                    createdAt = rootObject["created_at"]as? String,
+                    followers = rootObject["followers"] as? Int,
+                    userImage = rootObject["avatar_url"] as? String{
+                        
+                      let user = User(name: name, login: login, location: location, url: url, createdAt: createdAt, followers: followers, userImage: userImage)
+                        return user
+                    }
+                }
+        } catch _ {print("json did not Parse")}
+        return nil
+    }
 }
+
+
+// for User View Controller
+//    func getUser() -> User?{
+//        var returnedUser : User?
+//        GitHubService.GETUser { (success, json) -> () in
+//        if success{
+//            if let json = json{
+//                if let user = GitJsonParseService.UserFromGitJSONData(json){
+//                    returnedUser = user
+//                }
+//            }
+//        }
+//    }
+//        if let returnedUser = returnedUser{
+//            return returnedUser
+//        }else{
+//            return nil
+//        }
+//}
