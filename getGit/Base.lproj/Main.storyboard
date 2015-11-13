@@ -56,7 +56,7 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="SHd-D2-0F1" detailTextLabel="wO2-KL-2F5" style="IBUITableViewCellStyleValue1" id="Wng-Fa-Ck5">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Repository Cell" textLabel="SHd-D2-0F1" detailTextLabel="wO2-KL-2F5" style="IBUITableViewCellStyleValue1" id="Wng-Fa-Ck5">
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wng-Fa-Ck5" id="qoC-A2-gF7">
@@ -97,6 +97,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="gAS-I2-ioi"/>
+                    <connections>
+                        <outlet property="tableView" destination="hXK-5o-6Iy" id="uDE-1J-bu7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dZ4-cw-wAq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
