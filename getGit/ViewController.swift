@@ -13,9 +13,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var tableView: UITableView!
 
     
-    var repositories = [Repository] ()
+    var repositories = [Repository]() {
+        didSet{
+            self.tableView.reloadData()
+        }
+    }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
          //GitHubService.createRepositoryWithName("Beep")
@@ -26,6 +29,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
        GitHubService.GETRepositories { (success, repo) -> () in
         print(repo)
+        self.repositories = repo
         }
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -39,7 +43,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Repository Cell", forIndexPath: indexPath)
-        let repository = repositories[indexPath.row]
+        let repository = self.repositories[indexPath.row]
         
         cell.textLabel?.text = repository.name
         cell.detailTextLabel?.text = repository.createdAt
@@ -47,7 +51,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
     }
     
-
+ 
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
