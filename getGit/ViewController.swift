@@ -10,9 +10,18 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
+//       
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+         GitHubService.createRepositoryWithName("Beep")
+       // GitHubService.searchForRepo("gramCracker")
+//       GitHubService.GETRepositories { (success, repo) -> () in
+//        print(repo)
+//        }
+//        GitHubService.GETUser { (success, json) -> () in
+//    
+//        }
     }
 
     override func didReceiveMemoryWarning() {
