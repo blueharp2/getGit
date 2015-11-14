@@ -57,10 +57,9 @@ class UserDetailController: UIViewController {
         
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        getUser()
+       getUser()
         setUser()
     }
     
