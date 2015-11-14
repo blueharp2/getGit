@@ -83,9 +83,11 @@ class UserDetailController: UIViewController {
         }
     }
     
-    func setUser(){
-    self.setupUser?.name
+    func setUser() -> User? {
+        if let user = self.setupUser{
+            return setupUser
+        }else{
+            return nil
+        }
     }
-    
-    
 }
