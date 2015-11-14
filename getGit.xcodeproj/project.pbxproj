@@ -21,6 +21,7 @@
 		90C369B91BF3F3E300B1844C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C369B81BF3F3E300B1844C /* User.swift */; };
 		90C369BB1BF4072600B1844C /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C369BA1BF4072600B1844C /* Repository.swift */; };
 		90C9308B1BF2C6960048BA30 /* KeyChainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C9308A1BF2C6960048BA30 /* KeyChainService.swift */; };
+		90CDB5BD1BF66E2F00497CF1 /* UserDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CDB5BC1BF66E2F00497CF1 /* UserDetailController.swift */; };
 		90EA386F1BF5488E004351E7 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EA386E1BF5488E004351E7 /* OAuthViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		90C369B81BF3F3E300B1844C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		90C369BA1BF4072600B1844C /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		90C9308A1BF2C6960048BA30 /* KeyChainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyChainService.swift; sourceTree = "<group>"; };
+		90CDB5BC1BF66E2F00497CF1 /* UserDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailController.swift; sourceTree = "<group>"; };
 		90EA386E1BF5488E004351E7 /* OAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -169,6 +171,7 @@
 			children = (
 				900F14DA1BF1473300A2E670 /* ViewController.swift */,
 				90EA386E1BF5488E004351E7 /* OAuthViewController.swift */,
+				90CDB5BC1BF66E2F00497CF1 /* UserDetailController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				900F15071BF1581700A2E670 /* OAuthClient.swift in Sources */,
 				90C369B61BF3F0E200B1844C /* Owner.swift in Sources */,
 				90114C521BF2EFD30097FF73 /* GitService.swift in Sources */,
+				90CDB5BD1BF66E2F00497CF1 /* UserDetailController.swift in Sources */,
 				90EA386F1BF5488E004351E7 /* OAuthViewController.swift in Sources */,
 				90C369BB1BF4072600B1844C /* Repository.swift in Sources */,
 				90C9308B1BF2C6960048BA30 /* KeyChainService.swift in Sources */,

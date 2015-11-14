@@ -49,6 +49,8 @@ class GitJsonParseService{
         return nil
     }
     
+    
+    
     class func UserFromGitJSONData(jsonData: NSData) -> User? {
         do{
             if let rootObject = try NSJSONSerialization.JSONObjectWithData(jsonData, options: .MutableContainers) as? [String: AnyObject]{
@@ -72,21 +74,3 @@ class GitJsonParseService{
 }
 
 
-// for User View Controller
-//    func getUser() -> User?{
-//        var returnedUser : User?
-//        GitHubService.GETUser { (success, json) -> () in
-//        if success{
-//            if let json = json{
-//                if let user = GitJsonParseService.UserFromGitJSONData(json){
-//                    returnedUser = user
-//                }
-//            }
-//        }
-//    }
-//        if let returnedUser = returnedUser{
-//            return returnedUser
-//        }else{
-//            return nil
-//        }
-//}

@@ -13,9 +13,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var tableView: UITableView!
 
     
+    class func identifier() -> String {
+        return "ViewController"
+    }
+    
     var repositories = [Repository]() {
         didSet{
             self.tableView.reloadData()
+        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.fetchRepository()
+    }
+    
+    func fetchRepository() {
+        GitHubService.GETRepositories { (success, repo) -> () in
+            print(repo)
+            self.repositories = repo
+            
         }
     }
     
@@ -25,10 +41,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
        // GitHubService.searchForRepo("gramCracker")
                
         
-       GitHubService.GETRepositories { (success, repo) -> () in
-        print(repo)
-        self.repositories = repo
-        }
+        self.fetchRepository()
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }

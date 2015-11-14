@@ -87,9 +87,10 @@ class OAuthClient{
     }
     
     func saveToken(token: String, completion: (success: Bool) -> () ) {
-        KeychainService.save(token)
-        completion(success: true)
-        return
+        KeychainService.save(token) { () -> () in
+            completion(success: true)
+            return
+        }
         
         
     }

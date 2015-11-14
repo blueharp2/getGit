@@ -17,7 +17,7 @@ let kSecMatchLimitOneValue = kSecMatchLimitOne as NSString
 
 class KeychainService: NSObject {
   
-   class func save(data: NSString) {
+    class func save(data: NSString, completion: () -> ()) {
     let dataFromString: NSData = data.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
     
     let keychainQuery: NSMutableDictionary = NSMutableDictionary(objects: [kSecClassGenericPasswordValue, userAccount, dataFromString], forKeys: [kSecClassValue, kSecAttrAccountValue, kSecValueDataValue])
@@ -28,6 +28,7 @@ class KeychainService: NSObject {
     // Add the new keychain item
     let status: OSStatus = SecItemAdd(keychainQuery, nil)
     print("status is \(status.description)")
+        completion()
   }
   
    class func loadFromKeychain() -> NSString? {

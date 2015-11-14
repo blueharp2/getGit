@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class User {
     
@@ -18,7 +19,7 @@ class User {
     let followers: Int
     let userImage: String
     
-    //var image: UIImage?
+    var image: UIImage?
     
     
     

@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func checkLogInStatus(){
         if let token = OAuthClient.shared.token() {
-
+            //self.presentLogInViewController()
         } else {
             self.presentLogInViewController()
         }
@@ -52,20 +52,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 func presentLogInViewController(){
     
-    if let ViewController = self.window?.rootViewController as? ViewController, storyboard = ViewController.storyboard {
-        if let oauthViewController = storyboard.instantiateViewControllerWithIdentifier(OAuthViewController.identifier()) as? OAuthViewController{
-            ViewController.addChildViewController(oauthViewController)
-            ViewController.view.addSubview(oauthViewController.view)
-            oauthViewController.didMoveToParentViewController(ViewController)
+    if let tabBarController = self.window?.rootViewController as? UITabBarController, storyboard = tabBarController.storyboard {
+        
+        if let oauthViewController = storyboard.instantiateViewControllerWithIdentifier(OAuthViewController.identifier()) as? OAuthViewController, homeViewController = tabBarController.viewControllers?.first as? ViewController {
+            
+            tabBarController.addChildViewController(oauthViewController)
+            tabBarController.view.addSubview(oauthViewController.view)
+            oauthViewController.didMoveToParentViewController(tabBarController)
+            
             oauthViewController.oauthCompletionHandler = ({
-                print("calling the completion Handler")
-                UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
-                    oauthViewController.view.alpha = 0.0
-                    }, completion: { (finished) -> Void in
-                        oauthViewController.view.removeFromSuperview()
-                        oauthViewController.removeFromParentViewController()
-                        print("called the animation")
+                print("calling the dismiss login animation completion Handler")
+                NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                    UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+                        oauthViewController.view.alpha = 0.0
+                        }, completion: { (finished) -> Void in
+                            oauthViewController.view.removeFromSuperview()
+                            oauthViewController.removeFromParentViewController()
+                            
+                            homeViewController.fetchRepository()
+
+                           // tabBarController.viewControllers![0]
                     })
+
+                })
                 })
             self.oauthViewController = oauthViewController
         }
