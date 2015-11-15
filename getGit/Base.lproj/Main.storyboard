@@ -120,11 +120,83 @@
                         <segue destination="qpd-Ex-A8d" kind="relationship" relationship="viewControllers" id="jDQ-F7-QHG"/>
                         <segue destination="iNq-3W-A2Y" kind="relationship" relationship="viewControllers" id="dPY-jU-g5B"/>
                         <segue destination="lkN-qH-YbV" kind="relationship" relationship="viewControllers" id="tUF-2v-VhI"/>
+                        <segue destination="1KH-ok-giv" kind="relationship" relationship="viewControllers" id="T1l-w3-e3N"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T1W-1B-6Ai" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="423" y="855"/>
+        </scene>
+        <!--Repository Search-->
+        <scene sceneID="IOm-Vl-H4D">
+            <objects>
+                <viewController id="1KH-ok-giv" customClass="RepoSeachViewController" customModule="getGit" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7np-HN-a2V"/>
+                        <viewControllerLayoutGuide type="bottom" id="hot-Sm-8a4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rVN-FU-oaO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="DhG-MU-9Jt">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <animations/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ubu-4F-zOP">
+                                <rect key="frame" x="5" y="44" width="595" height="507"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RepoSearchCell" textLabel="BaU-pV-zjO" style="IBUITableViewCellStyleDefault" id="J54-GR-7UW">
+                                        <rect key="frame" x="0.0" y="28" width="595" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="J54-GR-7UW" id="Huk-cu-o2V">
+                                            <rect key="frame" x="0.0" y="0.0" width="595" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BaU-pV-zjO">
+                                                    <rect key="frame" x="15" y="0.0" width="565" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ubu-4F-zOP" firstAttribute="bottom" secondItem="hot-Sm-8a4" secondAttribute="top" id="29d-Ly-soL"/>
+                            <constraint firstItem="DhG-MU-9Jt" firstAttribute="leading" secondItem="rVN-FU-oaO" secondAttribute="leading" id="Cfz-oT-l2R"/>
+                            <constraint firstAttribute="trailing" secondItem="ubu-4F-zOP" secondAttribute="trailing" id="EcA-kj-N3K"/>
+                            <constraint firstAttribute="trailing" secondItem="ubu-4F-zOP" secondAttribute="trailing" id="O1D-Lc-tgL"/>
+                            <constraint firstItem="ubu-4F-zOP" firstAttribute="leading" secondItem="rVN-FU-oaO" secondAttribute="leading" constant="5" id="Vjp-9l-5JY"/>
+                            <constraint firstItem="hot-Sm-8a4" firstAttribute="top" secondItem="ubu-4F-zOP" secondAttribute="bottom" id="hWh-O9-Hhl"/>
+                            <constraint firstItem="ubu-4F-zOP" firstAttribute="top" secondItem="DhG-MU-9Jt" secondAttribute="bottom" id="iZ7-iv-4kJ"/>
+                            <constraint firstItem="ubu-4F-zOP" firstAttribute="leading" secondItem="rVN-FU-oaO" secondAttribute="leading" constant="5" id="nWK-vG-6HQ"/>
+                            <constraint firstAttribute="trailing" secondItem="DhG-MU-9Jt" secondAttribute="trailing" id="scH-Un-eBE"/>
+                            <constraint firstItem="DhG-MU-9Jt" firstAttribute="top" secondItem="rVN-FU-oaO" secondAttribute="top" id="xlB-2c-6bn"/>
+                            <constraint firstItem="ubu-4F-zOP" firstAttribute="top" secondItem="DhG-MU-9Jt" secondAttribute="bottom" id="zJG-kW-RUc"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Repository Search" id="0cl-r9-076"/>
+                    <connections>
+                        <outlet property="RepoSearchBar" destination="DhG-MU-9Jt" id="7o8-Uf-quY"/>
+                        <outlet property="RepoSearchTableView" destination="ubu-4F-zOP" id="cC8-NH-Ort"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JjK-ft-nUU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-325" y="1682"/>
         </scene>
         <!--Profile-->
         <scene sceneID="L6G-iv-qPl">
@@ -233,7 +305,7 @@
         <!--Search Users-->
         <scene sceneID="hly-Ed-2cM">
             <objects>
-                <viewController id="lkN-qH-YbV" sceneMemberID="viewController">
+                <viewController id="lkN-qH-YbV" customClass="UserSearchViewController" customModule="getGit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="19l-4d-cit"/>
                         <viewControllerLayoutGuide type="bottom" id="9fR-vT-T3W"/>

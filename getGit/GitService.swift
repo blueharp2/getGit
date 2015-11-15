@@ -12,29 +12,32 @@ import Foundation
 class GitHubService{
     
     
-    class func searchForRepo(searchFor: String){
+    class func searchForRepo(completion: (sucess: Bool, searchRepo: [SearchRepo])){
         
         guard let token = OAuthClient.shared.token() else {return}
+        //guard let searchTerm = RepoSeachViewController.searchBarSearchButtonClicked(searchTerm) else {return}
+        //How do I tell this function what the searchTerm is from the search bar?
         
-        let searchRequest = NSMutableURLRequest(URL: NSURL(string: "https://api.github.com/search/repositories?q=\(searchFor)")!)
-        
+        let searchRequest = NSMutableURLRequest(URL: NSURL(string: "https://api.github.com/search/repositories?access_token=\(token)&q=\(searchTerm)")!)
         searchRequest.setValue("application/json", forHTTPHeaderField: "Accept")
         
+        
         NSURLSession.sharedSession().dataTaskWithRequest(searchRequest) { (data, response, error) -> Void in
-            
+            if let error = error {
+                print(error)
+            }
+        
             if let data = data {
                 
-                let json = try! NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! [String : AnyObject]
-                
-                let items = json["items"] as! [[String : AnyObject]]
-                
-                for item in items {
-                    print(item)
-                    
+                if let searchRepositories = GitJsonParseService.SearchRepositoryFromGitJSONData(data){
+                    NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                        completion(sucess : true, searchRepo: searchRepositories)
+                    })
                 }
             }
-            }.resume()
+        } .resume()
     }
+
     
     
     class func GETRepositories(completion: (success: Bool, repo: [Repository]) -> ()) {
@@ -133,4 +136,17 @@ class GitHubService{
 // 5. Make the call using NSURLSession.
 // 6. Convert data to JSON
 // 7. Print out the JSON to make sure everything works.
+
+
+
+//            if let data = data {
+//
+//                let json = try! NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! [String : AnyObject]
+//
+//                let items = json["items"] as! [[String : AnyObject]]
+//
+//                for item in items {
+//                    print(item)
+
+//}
 
