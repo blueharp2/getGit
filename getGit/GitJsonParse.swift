@@ -73,25 +73,83 @@ class GitJsonParseService{
     }
     
     
-    
     class func SearchRepositoryFromGitJSONData(jsonData: NSData) -> [SearchRepo]? {
         do{
-            if let rootObject = try NSJSONSerialization.JSONObjectWithData(jsonData, options: .MutableContainers) as? [[String: AnyObject]]{
+            if let itemDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData, options: .MutableContainers) as? [String: AnyObject]{
                 
-                var searchRepos = [SearchRepo] ()
-                
-                for items in rootObject{
-                    if let name = items ["name"] as? String,
-                            id = items ["id"] as? Int {
+                if let items = itemDictionary["items"] as? [[String: AnyObject]]{
+                    
+                    var searchRepos = [SearchRepo] ()
+                    
+                    for eachRepository in items{
                         
-                        let searchRepo = SearchRepo(name: name, id: id)
-                        searchRepos.append(searchRepo)
+                        let name = eachRepository["name"] as? String
+                        let id = eachRepository["id"] as? Int
+                        
+                        if let name = name, id = id{
+                            let repo = SearchRepo(name: name, id: id)
+                            searchRepos.append(repo)
+                        }
+                        
+                    }
+                    
                 }
             }
-            return searchRepos
-        }
         } catch _ {print("json did not Parse")}
-    return nil
+        return nil
     }
-}
 
+//        class func SearchRepositoryFromGitJSONData(jsonData: NSData) -> [SearchRepo]? {
+//            do{
+//                if let rootObject = try NSJSONSerialization.JSONObjectWithData(jsonData, options: .MutableContainers) as? [String: AnyObject]{
+//    
+//                    var searchRepos = [SearchRepo] ()
+//    
+//                    for items in rootObject{
+//                        if let itemDictionary = items["items"] as? [String: AnyObject]{
+//                            var itemsInDictionary = GitJsonParseService.SearchRepositoryFromGitJSONDataItems(itemDictionary)
+//                            
+//                            let search = SearchRepositoryFromGitJSONDataItems.searchRepoItems
+//                            searchRepos.append(search)
+//                    }
+//                }
+//                return searchRepos
+//            }
+//            } catch _ {print("json did not Parse")}
+//        return nil
+//        }
+//
+//
+//    class func SearchRepositoryFromGitJSONDataItems(jsonData: [String: AnyObject]) ->SearchRepo? {
+//        
+//        if let name = jsonData ["name"] as? String,
+//                id = jsonData ["id"] as? Int {
+//                
+//                let searchRepoItems = SearchRepo(name: name, id: id)
+//                return searchRepoItems
+//        }
+//        return nil
+//}
+//
+//
+//    class func SearchRepositoryFromGitJSONData(jsonData: NSData) -> [SearchRepo]? {
+//        do{
+//            if let rootObject = try NSJSONSerialization.JSONObjectWithData(jsonData, options: .MutableContainers) as? [[String: AnyObject]]{
+//                
+//                var searchRepos = [SearchRepo] ()
+//                
+//                for items in rootObject{
+//                    if let name = items ["name"] as? String,
+//                            id = items ["id"] as? Int {
+//                        
+//                        let searchRepo = SearchRepo(name: name, id: id)
+//                        searchRepos.append(searchRepo)
+//                }
+//            }
+//            return searchRepos
+//        }
+//        } catch _ {print("json did not Parse")}
+//    return nil
+//    }
+}
+//

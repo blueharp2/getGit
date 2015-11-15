@@ -17,13 +17,14 @@ class RepoSeachViewController:UIViewController, UITableViewDelegate, UITableView
     
     var repositories = [SearchRepo]() {
         didSet{
-            self.RepoSearchTableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Automatic)
+            self.RepoSearchTableView.reloadData()
         }
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.RepoSearchBar.delegate = self
         
     }
     

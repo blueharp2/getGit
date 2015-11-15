@@ -23,6 +23,7 @@ class GitHubService{
         //How do I tell this function what the searchTerm is from the search bar?
         
         let searchRequest = NSMutableURLRequest(URL: NSURL(string: "https://api.github.com/search/repositories?access_token=\(token)&q=\(searchTerm)")!)
+        print(searchRequest)
         searchRequest.setValue("application/json", forHTTPHeaderField: "Accept")
         
         
