@@ -24,13 +24,13 @@ class RepoSeachViewController:UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getSearchRepo()
         
     }
     
-    func getSearchRepo() -> [SearchRepo]? {
+    func getSearchRepo(searchTerm: String) -> [SearchRepo]? {
         var returnedSearchRepo : [SearchRepo]?
-        GitHubService.searchForRepo { (success, searchRepo) -> () in
+        
+        GitHubService.searchForRepo(searchTerm) {(success, searchRepo) -> () in
             if success{
                 if let searchRepo = searchRepo{
                     returnedSearchRepo = searchRepo
@@ -39,29 +39,13 @@ class RepoSeachViewController:UIViewController, UITableViewDelegate, UITableView
         }
         if let returnedSearchRepo = returnedSearchRepo{
             return returnedSearchRepo
+            
         }else{
                 return nil
             }
         }
     
-//    func getUser() -> User?{
-//        var returnedUser : User?
-//        GitHubService.GETUser { (success, json) -> () in
-//            if success{
-//                if let json = json{
-//                    if let user = GitJsonParseService.UserFromGitJSONData(json){
-//                        returnedUser = user
-//                    }
-//                }
-//            }
-//        }
-//        if let returnedUser = returnedUser{
-//            return returnedUser
-//        }else{
-//            return nil
-//        }
-//    }
-    
+//
     //MARK: UITableViewDataSource
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -79,9 +63,14 @@ class RepoSeachViewController:UIViewController, UITableViewDelegate, UITableView
     
     //MARK: UISearchBarDelegate
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(searchBar: UISearchBar){
         guard let searchTerm = searchBar.text else {return}
-        
+        self.getSearchRepo(searchTerm)
+        if let repos = self.getSearchRepo(searchTerm){
+            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                self.repositories = repos
+            })
+        }
     }
     
     

@@ -12,14 +12,14 @@ import Foundation
 class GitHubService{
     
     
-    class func searchForRepo(completion: (success: Bool, searchRepo: [SearchRepo]?)-> ()) {
+    class func searchForRepo(searchTerm: String, completion: (success: Bool, searchRepo: [SearchRepo]?)-> ()) {
         
         guard let token = OAuthClient.shared.token() else {
             completion(success: false, searchRepo: nil)
             return
         }
         
-        var searchTerm = RepoSeachViewController.searchBarSearchButtonClicked
+//        var searchTerm = RepoSeachViewController.searchBarSearchButtonClicked
         //How do I tell this function what the searchTerm is from the search bar?
         
         let searchRequest = NSMutableURLRequest(URL: NSURL(string: "https://api.github.com/search/repositories?access_token=\(token)&q=\(searchTerm)")!)
@@ -96,6 +96,7 @@ class GitHubService{
             }).resume()
         }
     }
+    
     
     class func createRepositoryWithName(name: String) {
         guard let token = OAuthClient.shared.token() else {return}
