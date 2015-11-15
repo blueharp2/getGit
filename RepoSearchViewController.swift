@@ -22,23 +22,19 @@ class RepoSeachViewController:UIViewController, UITableViewDelegate, UITableView
     }
     
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        getSearchRepo()
         
     }
     
-    func getSearchRepo() -> SearchRepo?{
-        var returnedSearchRepo : SearchRepo?
+    func getSearchRepo() -> [SearchRepo]? {
+        var returnedSearchRepo : [SearchRepo]?
         GitHubService.searchForRepo { (success, searchRepo) -> () in
             if success{
-                let searchRepo = searchRepo{
-                    if let repo = GitJsonParseService.SearchRepositoryFromGitJSONData(searchRepo){
-                    returnedSearchRepo = repo
+                if let searchRepo = searchRepo{
+                    returnedSearchRepo = searchRepo
                     }
-                }
             }
         }
         if let returnedSearchRepo = returnedSearchRepo{
@@ -47,6 +43,7 @@ class RepoSeachViewController:UIViewController, UITableViewDelegate, UITableView
                 return nil
             }
         }
+    
 //    func getUser() -> User?{
 //        var returnedUser : User?
 //        GitHubService.GETUser { (success, json) -> () in

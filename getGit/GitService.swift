@@ -12,9 +12,13 @@ import Foundation
 class GitHubService{
     
     
-    class func searchForRepo(completion: (success: Bool, searchRepo: [SearchRepo])-> ()) {
+    class func searchForRepo(completion: (success: Bool, searchRepo: [SearchRepo]?)-> ()) {
         
-        guard let token = OAuthClient.shared.token() else {return}
+        guard let token = OAuthClient.shared.token() else {
+            completion(success: false, searchRepo: nil)
+            return
+        }
+        
         var searchTerm = RepoSeachViewController.searchBarSearchButtonClicked
         //How do I tell this function what the searchTerm is from the search bar?
         
@@ -25,6 +29,7 @@ class GitHubService{
         NSURLSession.sharedSession().dataTaskWithRequest(searchRequest) { (data, response, error) -> Void in
             if let error = error {
                 print(error)
+                
             }
         
             if let data = data {
@@ -34,6 +39,8 @@ class GitHubService{
                         completion(success : true, searchRepo: searchRepositories)
                     })
                 }
+            } else{
+                completion(success: false, searchRepo: nil)
             }
         } .resume()
     }
@@ -137,16 +144,4 @@ class GitHubService{
 // 6. Convert data to JSON
 // 7. Print out the JSON to make sure everything works.
 
-
-
-//            if let data = data {
-//
-//                let json = try! NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! [String : AnyObject]
-//
-//                let items = json["items"] as! [[String : AnyObject]]
-//
-//                for item in items {
-//                    print(item)
-
-//}
 
