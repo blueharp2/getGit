@@ -12,7 +12,7 @@ import Foundation
 class GitHubService{
     
     
-    class func searchForRepo(completion: (sucess: Bool, searchRepo: [SearchRepo])-> ()) {
+    class func searchForRepo(completion: (success: Bool, searchRepo: [SearchRepo])-> ()) {
         
         guard let token = OAuthClient.shared.token() else {return}
         var searchTerm = RepoSeachViewController.searchBarSearchButtonClicked
@@ -31,7 +31,7 @@ class GitHubService{
                 
                 if let searchRepositories = GitJsonParseService.SearchRepositoryFromGitJSONData(data){
                     NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                        completion(sucess : true, searchRepo: searchRepositories)
+                        completion(success : true, searchRepo: searchRepositories)
                     })
                 }
             }
