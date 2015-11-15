@@ -140,24 +140,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="DhG-MU-9Jt">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <animations/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ubu-4F-zOP">
-                                <rect key="frame" x="5" y="44" width="595" height="507"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RepoSearchCell" textLabel="BaU-pV-zjO" style="IBUITableViewCellStyleDefault" id="J54-GR-7UW">
-                                        <rect key="frame" x="0.0" y="28" width="595" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="J54-GR-7UW" id="Huk-cu-o2V">
-                                            <rect key="frame" x="0.0" y="0.0" width="595" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BaU-pV-zjO">
-                                                    <rect key="frame" x="15" y="0.0" width="565" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="570" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -175,17 +175,13 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ubu-4F-zOP" firstAttribute="bottom" secondItem="hot-Sm-8a4" secondAttribute="top" id="29d-Ly-soL"/>
-                            <constraint firstItem="DhG-MU-9Jt" firstAttribute="leading" secondItem="rVN-FU-oaO" secondAttribute="leading" id="Cfz-oT-l2R"/>
-                            <constraint firstAttribute="trailing" secondItem="ubu-4F-zOP" secondAttribute="trailing" id="EcA-kj-N3K"/>
-                            <constraint firstAttribute="trailing" secondItem="ubu-4F-zOP" secondAttribute="trailing" id="O1D-Lc-tgL"/>
-                            <constraint firstItem="ubu-4F-zOP" firstAttribute="leading" secondItem="rVN-FU-oaO" secondAttribute="leading" constant="5" id="Vjp-9l-5JY"/>
-                            <constraint firstItem="hot-Sm-8a4" firstAttribute="top" secondItem="ubu-4F-zOP" secondAttribute="bottom" id="hWh-O9-Hhl"/>
-                            <constraint firstItem="ubu-4F-zOP" firstAttribute="top" secondItem="DhG-MU-9Jt" secondAttribute="bottom" id="iZ7-iv-4kJ"/>
-                            <constraint firstItem="ubu-4F-zOP" firstAttribute="leading" secondItem="rVN-FU-oaO" secondAttribute="leading" constant="5" id="nWK-vG-6HQ"/>
-                            <constraint firstAttribute="trailing" secondItem="DhG-MU-9Jt" secondAttribute="trailing" id="scH-Un-eBE"/>
-                            <constraint firstItem="DhG-MU-9Jt" firstAttribute="top" secondItem="rVN-FU-oaO" secondAttribute="top" id="xlB-2c-6bn"/>
-                            <constraint firstItem="ubu-4F-zOP" firstAttribute="top" secondItem="DhG-MU-9Jt" secondAttribute="bottom" id="zJG-kW-RUc"/>
+                            <constraint firstItem="ubu-4F-zOP" firstAttribute="top" secondItem="DhG-MU-9Jt" secondAttribute="bottom" id="AFs-LV-Gmm"/>
+                            <constraint firstItem="ubu-4F-zOP" firstAttribute="leading" secondItem="rVN-FU-oaO" secondAttribute="leadingMargin" constant="-20" id="AeN-Si-ioP"/>
+                            <constraint firstItem="DhG-MU-9Jt" firstAttribute="top" secondItem="rVN-FU-oaO" secondAttribute="topMargin" constant="20" id="Th3-8O-6XL"/>
+                            <constraint firstItem="hot-Sm-8a4" firstAttribute="top" secondItem="ubu-4F-zOP" secondAttribute="bottom" id="kpn-xi-z1A"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ubu-4F-zOP" secondAttribute="trailing" constant="-20" id="l1A-3M-GEk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="DhG-MU-9Jt" secondAttribute="trailing" constant="-20" id="mov-qq-711"/>
+                            <constraint firstItem="DhG-MU-9Jt" firstAttribute="leading" secondItem="rVN-FU-oaO" secondAttribute="leadingMargin" constant="-20" id="tLp-Zo-3Vl"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Repository Search" id="0cl-r9-076"/>
