@@ -309,8 +309,59 @@
                     <view key="view" contentMode="scaleToFill" id="1Du-bp-JKK">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="zBU-Zf-4Fg">
+                                <rect key="frame" x="0.0" y="30" width="600" height="44"/>
+                                <animations/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d64-eo-0Zu">
+                                <rect key="frame" x="0.0" y="74" width="600" height="477"/>
+                                <animations/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4Mp-XV-JZz">
+                                    <size key="itemSize" width="175" height="167"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UserSearchViewCell" id="2Aa-Ey-emv">
+                                        <rect key="frame" x="0.0" y="0.0" width="175" height="167"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="175" height="167"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4TV-v6-Tnl">
+                                                    <rect key="frame" x="0.0" y="0.0" width="175" height="167"/>
+                                                    <animations/>
+                                                </imageView>
+                                            </subviews>
+                                            <animations/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstItem="4TV-v6-Tnl" firstAttribute="centerY" secondItem="2Aa-Ey-emv" secondAttribute="centerY" id="D1A-9M-asc"/>
+                                            <constraint firstItem="4TV-v6-Tnl" firstAttribute="width" secondItem="2Aa-Ey-emv" secondAttribute="width" id="J9L-SG-sNs"/>
+                                            <constraint firstItem="4TV-v6-Tnl" firstAttribute="centerX" secondItem="2Aa-Ey-emv" secondAttribute="centerX" id="WOa-Qz-h9H"/>
+                                            <constraint firstItem="4TV-v6-Tnl" firstAttribute="height" secondItem="2Aa-Ey-emv" secondAttribute="height" id="xDo-2y-y8K"/>
+                                        </constraints>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="d64-eo-0Zu" firstAttribute="top" secondItem="zBU-Zf-4Fg" secondAttribute="bottom" id="7yf-gB-FJR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="d64-eo-0Zu" secondAttribute="trailing" constant="-20" id="Lc0-vz-bLL"/>
+                            <constraint firstItem="zBU-Zf-4Fg" firstAttribute="leading" secondItem="1Du-bp-JKK" secondAttribute="leadingMargin" constant="-20" id="TVI-uS-epL"/>
+                            <constraint firstItem="d64-eo-0Zu" firstAttribute="leading" secondItem="1Du-bp-JKK" secondAttribute="leadingMargin" constant="-20" id="caB-kv-HDN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zBU-Zf-4Fg" secondAttribute="trailing" constant="-20" id="cwn-qr-eb0"/>
+                            <constraint firstItem="zBU-Zf-4Fg" firstAttribute="top" secondItem="19l-4d-cit" secondAttribute="bottom" constant="10" id="fKD-WH-J4P"/>
+                            <constraint firstItem="9fR-vT-T3W" firstAttribute="top" secondItem="d64-eo-0Zu" secondAttribute="bottom" id="n6r-0x-2fq"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Search Users" id="JHQ-Wd-N4f"/>
                 </viewController>

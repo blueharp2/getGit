@@ -54,7 +54,6 @@ class UserDetailController: UIViewController {
                 }
             }
         }
-        
     }
     
     override func viewDidLoad() {
