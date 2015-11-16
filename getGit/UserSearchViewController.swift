@@ -16,8 +16,34 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
     
     @IBOutlet weak var UserSearchCollectionView: UICollectionView!
     
-    var users = [UserSearch] ()
+    var users = [UserSearch] () {
+        didSet{
+            self.UserSearchCollectionView.reloadData()
+        }
+    }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.UserSearchBar.delegate = self
+    }
+    
+    
+    func getSearchUsers(searchUser: String) ->[UserSearch]? {
+        var returnedSearchUsers : [UserSearch]?
+        
+        GitHubService.searchForUsers(searchUser) { (success, searchUser) -> () in
+            if success{
+                if let searchUser = searchUser{
+                    returnedSearchUsers = searchUser
+                }
+            }
+        }
+        if let returnedSearchUsers = returnedSearchUsers{
+            return returnedSearchUsers
+        }else {
+            return nil
+        }
+    }
     
     
     //MARK: UITableViewDataSource
@@ -42,7 +68,12 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
     //MARK:UISearchBarDelegate
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         guard let searchUser = searchBar.text else {return}
-        
+        self.getSearchUsers(searchUser)
+        if let users = self.getSearchUsers(searchUser){
+            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                self.users = users
+            })
+        }
     }
     
     
