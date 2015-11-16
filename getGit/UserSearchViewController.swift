@@ -23,7 +23,7 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
     //MARK: UITableViewDataSource
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        self.users.count
+        return self.users.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
