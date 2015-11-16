@@ -117,12 +117,15 @@ class GitHubService{
                 if let error = error{
                     print(error)
                 }
-                if let data = data {
-                    completion(success: true, json: data)
-                    
-                }else{
-                    completion(success: false, json: nil)
-                }
+                NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                    if let data = data {
+                        
+                        completion(success: true, json: data)
+                        
+                    }else{
+                        completion(success: false, json: nil)
+                    }
+                })
             }).resume()
         }
     }

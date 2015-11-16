@@ -52,9 +52,9 @@ class GitJsonParseService{
     
     
     class func UserFromGitJSONData(jsonData: NSData) -> User? {
+        
         do{
             if let rootObject = try NSJSONSerialization.JSONObjectWithData(jsonData, options: .MutableContainers) as? [String: AnyObject]{
-                
                 
                     if let name = rootObject["name"] as? String,
                     login = rootObject["login"]as? String,

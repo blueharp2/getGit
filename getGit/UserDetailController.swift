@@ -59,33 +59,34 @@ class UserDetailController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        getUser()
-        setUser()
+//        setUser()
     }
     
     
-    func getUser() -> User?{
-        var returnedUser : User?
+    func getUser(){
+//        var returnedUser : User?
         GitHubService.GETUser { (success, json) -> () in
             if success{
                 if let json = json{
                     if let user = GitJsonParseService.UserFromGitJSONData(json){
-                        returnedUser = user
+                        self.setupUser = user
+                        
                     }
                 }
             }
         }
-        if let returnedUser = returnedUser{
-            return returnedUser
-        }else{
-            return nil
-        }
+//        if let returnedUser = returnedUser{
+//            return returnedUser
+//        }else{
+//            return nil
+//        }
     }
     
-    func setUser() -> User? {
-        if let user = self.setupUser{
-            return setupUser
-        }else{
-            return nil
-        }
-    }
+//    func setUser() -> User? {
+//        if let user = self.setupUser{
+//            return setupUser
+//        }else{
+//            return nil
+//        }
+//    }
 }
