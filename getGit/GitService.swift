@@ -19,9 +19,6 @@ class GitHubService{
             return
         }
         
-//        var searchTerm = RepoSeachViewController.searchBarSearchButtonClicked
-        //How do I tell this function what the searchTerm is from the search bar?
-        
         let searchRequest = NSMutableURLRequest(URL: NSURL(string: "https://api.github.com/search/repositories?access_token=\(token)&q=\(searchTerm)")!)
         print(searchRequest)
         searchRequest.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -42,6 +39,38 @@ class GitHubService{
                 }
             } else{
                 completion(success: false, searchRepo: nil)
+            }
+        } .resume()
+    }
+
+    
+    class func searchForUsers(searchUser: String, completion: (success: Bool, searchUser: [UserSearch]?)-> ()) {
+        
+        guard let token = OAuthClient.shared.token() else {
+            completion(success: false, searchUser: nil)
+            return
+        }
+        
+        let searchRequest = NSMutableURLRequest(URL: NSURL(string: "https://api.github.com/search/users?access_token=\(token)&q=\(searchUser)")!)
+        print(searchRequest)
+        searchRequest.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        
+        NSURLSession.sharedSession().dataTaskWithRequest(searchRequest) { (data, response, error) -> Void in
+            if let error = error {
+                print(error)
+                
+            }
+            
+            if let data = data {
+                
+                if let searchUsers = GitJsonParseService.SearchUsersFromGitJSONData(data){
+                    NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                        completion(success : true, searchUser: searchUsers)
+                    })
+                }
+            } else{
+                completion(success: false, searchUser: nil)
             }
         } .resume()
     }

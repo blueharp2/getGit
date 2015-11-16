@@ -39,13 +39,13 @@ class GitJsonParseService{
     
     class func OwnerFromGitJSONData(jsonData: [String: AnyObject]) ->Owner? {
         
-                    if let login = jsonData ["login"] as? String,
-                        htmlUrl = jsonData ["html_url"] as? String,
-                        id = jsonData ["id"] as? Int {
-                            
-                            let owner = Owner(login: login, htmlUrl: htmlUrl, id: id)
-                           return owner
-                }
+        if let login = jsonData ["login"] as? String,
+            htmlUrl = jsonData ["html_url"] as? String,
+            id = jsonData ["id"] as? Int {
+                
+                let owner = Owner(login: login, htmlUrl: htmlUrl, id: id)
+                return owner
+        }
         return nil
     }
     
@@ -98,8 +98,34 @@ class GitJsonParseService{
         } catch _ {print("json did not Parse")}
         return nil
     }
-}
 
+
+    class func SearchUsersFromGitJSONData(jsonData: NSData) -> [UserSearch]? {
+        do{
+        if let usersDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData, options: .MutableContainers) as? [String: AnyObject]{
+            
+            if let users = usersDictionary["items"] as? [[String: AnyObject]]{
+                
+                var searchUsers = [UserSearch] ()
+                
+                for eachUser in users{
+                    let name = eachUser["login"] as? String
+                    let profileImageURL = eachUser["avatar_url"] as? String
+                    let userURL = eachUser["url"] as? String
+                    
+                    if let name = name, profileImageURL = profileImageURL, userURL = userURL{
+                        let user = UserSearch(name: name, profileImageURL: profileImageURL, userURL: userURL)
+                        searchUsers.append(user)
+                    }
+                    
+                }
+                
+            }
+        }
+    } catch _ {print("json did not Parse")}
+    return nil
+}
+}
 
 
 

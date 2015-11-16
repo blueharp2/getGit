@@ -325,7 +325,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UserSearchViewCell" id="2Aa-Ey-emv">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UserSearchViewCell" id="2Aa-Ey-emv" customClass="UserSearchCollectionViewCell" customModule="getGit" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="175" height="167"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -347,6 +347,9 @@
                                             <constraint firstItem="4TV-v6-Tnl" firstAttribute="centerX" secondItem="2Aa-Ey-emv" secondAttribute="centerX" id="WOa-Qz-h9H"/>
                                             <constraint firstItem="4TV-v6-Tnl" firstAttribute="height" secondItem="2Aa-Ey-emv" secondAttribute="height" id="xDo-2y-y8K"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="UserSearchViewImage" destination="4TV-v6-Tnl" id="TNv-R5-kb3"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -364,6 +367,10 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Search Users" id="JHQ-Wd-N4f"/>
+                    <connections>
+                        <outlet property="UserSearchBar" destination="zBU-Zf-4Fg" id="gd0-Tr-5kI"/>
+                        <outlet property="UserSearchCollectionView" destination="d64-eo-0Zu" id="AVs-Ic-dak"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RDG-1M-Axh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
