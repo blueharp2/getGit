@@ -1,20 +1,19 @@
 //
-//  UserSearchCollectionViewCell.swift
+//  SearchUserCollectionViewCell.swift
 //  getGit
 //
-//  Created by Lindsey on 11/15/15.
+//  Created by Lindsey on 11/23/15.
 //  Copyright © 2015 Lindsey Boggio. All rights reserved.
 //
 
 import UIKit
 
-class UserSearchCollectionViewCell: UICollectionViewCell {
-    
+class SearchUserCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var userSearchViewImage: UIImageView!
     
     
-    var user: UserSearch {
+    var user: UserSearch! {
         didSet{
             
             NSOperationQueue().addOperationWithBlock { () -> Void in
@@ -31,17 +30,9 @@ class UserSearchCollectionViewCell: UICollectionViewCell {
         }
     }
     
-//    init(User: UserSearch){
-//        self.user = user
-
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
     override func prepareForReuse() {
         super.prepareForReuse()
         self.userSearchViewImage.image = nil
     }
+    
 }

@@ -16,10 +16,10 @@
 		900F14F91BF1473400A2E670 /* getGitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900F14F81BF1473400A2E670 /* getGitUITests.swift */; };
 		900F15071BF1581700A2E670 /* OAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900F15061BF1581700A2E670 /* OAuthClient.swift */; };
 		90114C521BF2EFD30097FF73 /* GitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90114C511BF2EFD30097FF73 /* GitService.swift */; };
+		9015353A1C03DE9B00E0BC9D /* SearchUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901535391C03DE9B00E0BC9D /* SearchUserCollectionViewCell.swift */; };
 		906995491BF7F5FB0032922D /* UserSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906995481BF7F5FB0032922D /* UserSearchViewController.swift */; };
 		9069954B1BF7F6EB0032922D /* RepoSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9069954A1BF7F6EB0032922D /* RepoSearchViewController.swift */; };
 		9069954D1BF80D9D0032922D /* SearchRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9069954C1BF80D9D0032922D /* SearchRepo.swift */; };
-		9069954F1BF95EF90032922D /* UserSearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9069954E1BF95EF90032922D /* UserSearchCollectionViewCell.swift */; };
 		906995511BF95FF40032922D /* UserSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906995501BF95FF40032922D /* UserSearch.swift */; };
 		9075B4321BF4126F006D7B17 /* GitJsonParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9075B4311BF4126F006D7B17 /* GitJsonParse.swift */; };
 		90C369B61BF3F0E200B1844C /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C369B51BF3F0E200B1844C /* Owner.swift */; };
@@ -63,10 +63,10 @@
 		900F14FA1BF1473400A2E670 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		900F15061BF1581700A2E670 /* OAuthClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthClient.swift; sourceTree = "<group>"; };
 		90114C511BF2EFD30097FF73 /* GitService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitService.swift; sourceTree = "<group>"; };
+		901535391C03DE9B00E0BC9D /* SearchUserCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchUserCollectionViewCell.swift; path = ../SearchUserCollectionViewCell.swift; sourceTree = "<group>"; };
 		906995481BF7F5FB0032922D /* UserSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchViewController.swift; sourceTree = "<group>"; };
 		9069954A1BF7F6EB0032922D /* RepoSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepoSearchViewController.swift; path = ../RepoSearchViewController.swift; sourceTree = "<group>"; };
 		9069954C1BF80D9D0032922D /* SearchRepo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRepo.swift; sourceTree = "<group>"; };
-		9069954E1BF95EF90032922D /* UserSearchCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		906995501BF95FF40032922D /* UserSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserSearch.swift; path = ../UserSearch.swift; sourceTree = "<group>"; };
 		9075B4311BF4126F006D7B17 /* GitJsonParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitJsonParse.swift; sourceTree = "<group>"; };
 		90C369B51BF3F0E200B1844C /* Owner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
@@ -184,7 +184,7 @@
 				900F14DA1BF1473300A2E670 /* ViewController.swift */,
 				90EA386E1BF5488E004351E7 /* OAuthViewController.swift */,
 				90CDB5BC1BF66E2F00497CF1 /* UserDetailController.swift */,
-				9069954E1BF95EF90032922D /* UserSearchCollectionViewCell.swift */,
+				901535391C03DE9B00E0BC9D /* SearchUserCollectionViewCell.swift */,
 				906995481BF7F5FB0032922D /* UserSearchViewController.swift */,
 				9069954A1BF7F6EB0032922D /* RepoSearchViewController.swift */,
 			);
@@ -333,9 +333,9 @@
 				90CDB5BD1BF66E2F00497CF1 /* UserDetailController.swift in Sources */,
 				90EA386F1BF5488E004351E7 /* OAuthViewController.swift in Sources */,
 				90C369BB1BF4072600B1844C /* Repository.swift in Sources */,
-				9069954F1BF95EF90032922D /* UserSearchCollectionViewCell.swift in Sources */,
 				90C9308B1BF2C6960048BA30 /* KeyChainService.swift in Sources */,
 				900F14DB1BF1473300A2E670 /* ViewController.swift in Sources */,
+				9015353A1C03DE9B00E0BC9D /* SearchUserCollectionViewCell.swift in Sources */,
 				900F14D91BF1473300A2E670 /* AppDelegate.swift in Sources */,
 				90C369B91BF3F3E300B1844C /* User.swift in Sources */,
 			);

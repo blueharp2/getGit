@@ -25,26 +25,22 @@ class RepoSeachViewController:UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         self.RepoSearchBar.delegate = self
+        self.RepoSearchTableView.dataSource = self
         
     }
     
-    func getSearchRepo(searchTerm: String) -> [SearchRepo]? {
-        var returnedSearchRepo : [SearchRepo]?
+    func getSearchRepo(searchTerm: String){
+        //        var returnedSearchRepo : [SearchRepo]?
         
         GitHubService.searchForRepo(searchTerm) {(success, searchRepo) -> () in
             if success{
                 if let searchRepo = searchRepo{
-                    returnedSearchRepo = searchRepo
-                    }
+                    self.repositories = searchRepo
+                    
+                }
             }
         }
-        if let returnedSearchRepo = returnedSearchRepo{
-            return returnedSearchRepo
-            
-        }else{
-                return nil
-            }
-        }
+    }
     
 //
     //MARK: UITableViewDataSource
@@ -67,11 +63,7 @@ class RepoSeachViewController:UIViewController, UITableViewDelegate, UITableView
     func searchBarSearchButtonClicked(searchBar: UISearchBar){
         guard let searchTerm = searchBar.text else {return}
         self.getSearchRepo(searchTerm)
-        if let repos = self.getSearchRepo(searchTerm){
-            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                self.repositories = repos
-            })
-        }
+
     }
     
     

@@ -77,12 +77,13 @@ class GitJsonParseService{
     class func SearchRepositoryFromGitJSONData(jsonData: NSData) -> [SearchRepo]? {
         do{
             if let itemDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData, options: .MutableContainers) as? [String: AnyObject]{
-                
+//                print(itemDictionary)
                 if let items = itemDictionary["items"] as? [[String: AnyObject]]{
                     
                     var searchRepos = [SearchRepo] ()
                     
                     for eachRepository in items{
+                        print(eachRepository)
                         let name = eachRepository["name"] as? String
                         let id = eachRepository["id"] as? Int
                         
@@ -92,7 +93,7 @@ class GitJsonParseService{
                         }
                         
                     }
-                    
+                    return searchRepos
                 }
             }
         } catch _ {print("json did not Parse")}
@@ -119,7 +120,7 @@ class GitJsonParseService{
                     }
                     
                 }
-                
+                return searchUsers
             }
         }
     } catch _ {print("json did not Parse")}

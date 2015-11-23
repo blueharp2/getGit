@@ -25,6 +25,8 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         self.UserSearchBar.delegate = self
+        self.UserSearchCollectionView.dataSource = self
+        self.UserSearchCollectionView.delegate = self
     }
     
     
@@ -34,7 +36,7 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
         GitHubService.searchForUsers(searchUser) { (success, searchUser) -> () in
             if success{
                 if let searchUser = searchUser{
-                    returnedSearchUsers = searchUser
+                    self.users = searchUser
                 }
             }
         }
@@ -53,7 +55,7 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("UserSearchViewCell", forIndexPath: indexPath) as! UserSearchCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("UserSearchViewCell", forIndexPath: indexPath) as! SearchUserCollectionViewCell
         let user = self.users[indexPath.row]
         cell.user = user
         return cell

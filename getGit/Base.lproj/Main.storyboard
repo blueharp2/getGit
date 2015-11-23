@@ -325,7 +325,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UserSearchViewCell" id="2Aa-Ey-emv" customClass="UserSearchCollectionViewCell" customModule="getGit" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UserSearchViewCell" id="2Aa-Ey-emv" customClass="SearchUserCollectionViewCell" customModule="getGit" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="175" height="167"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -348,7 +348,7 @@
                                             <constraint firstItem="4TV-v6-Tnl" firstAttribute="height" secondItem="2Aa-Ey-emv" secondAttribute="height" id="xDo-2y-y8K"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="UserSearchViewImage" destination="4TV-v6-Tnl" id="TNv-R5-kb3"/>
+                                            <outlet property="userSearchViewImage" destination="4TV-v6-Tnl" id="njC-4E-W1m"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
