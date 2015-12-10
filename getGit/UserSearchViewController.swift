@@ -8,13 +8,13 @@
 
 import UIKit
 
-class UserSearchViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate{
+class UserSearchViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate, UIViewControllerTransitioningDelegate{
     
    
     @IBOutlet weak var UserSearchBar: UISearchBar!
-    
-    
     @IBOutlet weak var UserSearchCollectionView: UICollectionView!
+    
+    let customTransition = CustomTransition(duration: 3.0)
     
     var users = [UserSearch] () {
         didSet{
@@ -82,4 +82,19 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
     class func identifier() -> String {
         return "UserSearchViewController"
     }
+    
+    //Mark:Transition and Segue
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "UserSearchDetailViewController" {
+            guard let userSearchDetailViewController = segue.destinationViewController as? UserSearchDetailViewController else {return}
+            userSearchDetailViewController.transitioningDelegate = self
+        }
+    }
+    
+    func animationControllerForPresentViewController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source:UIViewController) ->UIViewControllerAnimatedTransitioning?{
+        return self.customTransition
+    }
+    
+    
 }

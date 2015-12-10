@@ -161,7 +161,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -375,6 +375,57 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RDG-1M-Axh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1221" y="1676"/>
+        </scene>
+        <!--User Search Detail View Controller-->
+        <scene sceneID="BOZ-eb-D6i">
+            <objects>
+                <viewController id="rZK-9I-wep" customClass="UserSearchDetailViewController" customModule="getGit" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vcb-sk-ZSn"/>
+                        <viewControllerLayoutGuide type="bottom" id="hME-WK-z8I"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NAS-UF-63D">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fsl-bI-6tN">
+                                <rect key="frame" x="204" y="28" width="193" height="193"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="193" id="9ZX-xe-7R5"/>
+                                    <constraint firstAttribute="width" constant="193" id="oM6-fT-lpa"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MWi-Af-gAq">
+                                <rect key="frame" x="255" y="247" width="91" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="URL Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3gS-Ng-Zo5">
+                                <rect key="frame" x="261" y="276" width="79" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MWi-Af-gAq" firstAttribute="top" secondItem="fsl-bI-6tN" secondAttribute="bottom" constant="26" id="Qzp-gB-35z"/>
+                            <constraint firstItem="MWi-Af-gAq" firstAttribute="centerX" secondItem="NAS-UF-63D" secondAttribute="centerX" id="W3W-0L-0h3"/>
+                            <constraint firstItem="fsl-bI-6tN" firstAttribute="top" secondItem="vcb-sk-ZSn" secondAttribute="bottom" constant="8" id="aF7-ev-biv"/>
+                            <constraint firstItem="3gS-Ng-Zo5" firstAttribute="centerX" secondItem="NAS-UF-63D" secondAttribute="centerX" id="db1-EA-6ZF"/>
+                            <constraint firstItem="3gS-Ng-Zo5" firstAttribute="top" secondItem="MWi-Af-gAq" secondAttribute="bottom" constant="8" id="kTH-Tr-XTz"/>
+                            <constraint firstItem="fsl-bI-6tN" firstAttribute="centerX" secondItem="NAS-UF-63D" secondAttribute="centerX" id="meC-2p-OYb"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="knT-va-OmJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1221" y="2377"/>
         </scene>
     </scenes>
 </document>
