@@ -349,6 +349,7 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="userSearchViewImage" destination="4TV-v6-Tnl" id="njC-4E-W1m"/>
+                                            <segue destination="rZK-9I-wep" kind="presentation" identifier="UserSearchDetailViewController" id="jP3-0q-t8T"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -422,6 +423,11 @@
                             <constraint firstItem="fsl-bI-6tN" firstAttribute="centerX" secondItem="NAS-UF-63D" secondAttribute="centerX" id="meC-2p-OYb"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="nameLabel" destination="MWi-Af-gAq" id="zZE-tY-bPw"/>
+                        <outlet property="urlLabel" destination="3gS-Ng-Zo5" id="j2b-2z-nWJ"/>
+                        <outlet property="userImageVIew" destination="fsl-bI-6tN" id="v2p-bo-LvK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="knT-va-OmJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

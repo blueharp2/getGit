@@ -13,6 +13,7 @@ class UserSearch{
     let name : String
     let profileImageURL: String
     let userURL: String
+    var userImage:UIImage?
     
     init(name: String, profileImageURL: String, userURL: String){
         self.name = name

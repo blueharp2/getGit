@@ -14,6 +14,8 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
     @IBOutlet weak var UserSearchBar: UISearchBar!
     @IBOutlet weak var UserSearchCollectionView: UICollectionView!
     
+    var indexPathSelected: NSIndexPath?
+    
     let customTransition = CustomTransition(duration: 3.0)
     
     var users = [UserSearch] () {
@@ -62,9 +64,10 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
         
     }
     
-//    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-//        let cell =
-//    }
+    //func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+       // self.indexPathSelected = indexPath
+        
+    //}
     
     
     //MARK:UISearchBarDelegate
@@ -86,9 +89,16 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
     //Mark:Transition and Segue
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        let indexpaths = self.UserSearchCollectionView.indexPathsForSelectedItems()
+        let indexpath = indexpaths!.first
+        
+        print(indexpath)
+        
         if segue.identifier == "UserSearchDetailViewController" {
             guard let userSearchDetailViewController = segue.destinationViewController as? UserSearchDetailViewController else {return}
             userSearchDetailViewController.transitioningDelegate = self
+            userSearchDetailViewController.setupUserFromSearch = self.users[indexpath!.row]
         }
     }
     
