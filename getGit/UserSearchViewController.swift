@@ -71,16 +71,16 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
         
     //}
     
-    extension NSString{
-        
-        do{
-        try NSRegularExpression(pattern: "[^0-9azA-Z]", options: NSRegularExpressionOptions.CaseInsensitive)
-        
-        } catch error {
-            print(error)
-        }
-
-    }
+//    extension NSString{
+//        
+//        do{
+//        try NSRegularExpression(pattern: "[^0-9azA-Z]", options: NSRegularExpressionOptions.CaseInsensitive)
+//        
+//        } catch error {
+//            print(error)
+//        }
+//
+//    }
     
     
     //MARK:UISearchBarDelegate

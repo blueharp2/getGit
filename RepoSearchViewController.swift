@@ -7,13 +7,15 @@
 //
 
 import UIKit
+import SafariServices
 
-class RepoSeachViewController:UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate  {
+class RepoSeachViewController:UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, SFSafariViewControllerDelegate  {
     
     @IBOutlet weak var RepoSearchTableView: UITableView!
     
     @IBOutlet weak var RepoSearchBar: UISearchBar!
     
+    var indexPathSelected: NSIndexPath?
     
     var repositories = [SearchRepo]() {
         didSet{
@@ -55,6 +57,22 @@ class RepoSeachViewController:UIViewController, UITableViewDelegate, UITableView
         cell.textLabel?.text = repository.name
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        let indexpaths = self.RepoSearchTableView.indexPathForSelectedRow
+        let indexpath = indexpaths!.row
+        
+        let safariViewController = SFSafariViewController(URL: SearchRepo.url, entersReaderIfAvailable: true)
+        safariViewController.delegate = self
+        self.presentViewController(safariViewController, animated: true, completion: nil)
+    }
+    
+    
+   //MARK:SFSafariView Controller Delegate
+    
+    func safariViewControllerDidFinish(controller: SFSafariViewController) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
     }
     
     
