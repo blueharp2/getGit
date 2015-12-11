@@ -18,6 +18,8 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
     
     let customTransition = CustomTransition(duration: 3.34)
     
+
+    
     var users = [UserSearch] () {
         didSet{
             self.UserSearchCollectionView.reloadData()
@@ -70,8 +72,19 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
     //}
     
     
+    
     //MARK:UISearchBarDelegate
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        
+    
+        do{
+            try NSRegularExpression(pattern: "[^0-9azA-Z]", options: NSRegularExpressionOptions.CaseInsensitive)
+            
+        } catch let error {
+            print(error)
+        }
+        
+        
         guard let searchUser = searchBar.text else {return}
         self.getSearchUsers(searchUser)
         if let users = self.getSearchUsers(searchUser){
@@ -96,7 +109,7 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
         print(indexpath)
         
         if segue.identifier == "UserSearchDetailViewController" {
-            print("\n\n\nhahah\n\n\n\n")
+           // print("\n\n\nhahah\n\n\n\n")
             
             guard let userSearchDetailViewController = segue.destinationViewController as? UserSearchDetailViewController else {return}
             userSearchDetailViewController.transitioningDelegate = self
