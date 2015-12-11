@@ -12,10 +12,12 @@ class SearchRepo {
    
     let name: String
     let id: Int
+    let url: NSURL
     
-    init(name: String, id: Int){
+    init(name: String, id: Int, url: NSURL){
         self.name = name
         self.id = id
+        self.url = url
     }
     
 }

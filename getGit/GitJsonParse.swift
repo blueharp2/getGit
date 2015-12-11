@@ -86,9 +86,10 @@ class GitJsonParseService{
                         print(eachRepository)
                         let name = eachRepository["name"] as? String
                         let id = eachRepository["id"] as? Int
+                        let url = eachRepository["svn_url"] as? NSURL
                         
-                        if let name = name, id = id{
-                            let repo = SearchRepo(name: name, id: id)
+                        if let name = name, id = id, url = url{
+                            let repo = SearchRepo(name: name, id: id, url: url)
                             searchRepos.append(repo)
                         }
                         
