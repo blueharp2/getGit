@@ -71,20 +71,20 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
         
     //}
     
+    extension NSString{
+        
+        do{
+        try NSRegularExpression(pattern: "[^0-9azA-Z]", options: NSRegularExpressionOptions.CaseInsensitive)
+        
+        } catch error {
+            print(error)
+        }
+
+    }
     
     
     //MARK:UISearchBarDelegate
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        
-    
-        do{
-            try NSRegularExpression(pattern: "[^0-9azA-Z]", options: NSRegularExpressionOptions.CaseInsensitive)
-            
-        } catch let error {
-            print(error)
-        }
-        
-        
         guard let searchUser = searchBar.text else {return}
         self.getSearchUsers(searchUser)
         if let users = self.getSearchUsers(searchUser){
