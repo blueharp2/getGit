@@ -21,7 +21,7 @@ class CustomTransition: NSObject, UIViewControllerAnimatedTransitioning{
     }
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        guard let goToViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) else {
+        guard let goToViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) else {
             return}
         
         guard let containerView = transitionContext.containerView() else {return}

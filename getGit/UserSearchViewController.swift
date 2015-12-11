@@ -16,7 +16,7 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
     
     var indexPathSelected: NSIndexPath?
     
-    let customTransition = CustomTransition(duration: 3.0)
+    let customTransition = CustomTransition(duration: 3.34)
     
     var users = [UserSearch] () {
         didSet{
@@ -96,15 +96,18 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
         print(indexpath)
         
         if segue.identifier == "UserSearchDetailViewController" {
+            print("\n\n\nhahah\n\n\n\n")
+            
             guard let userSearchDetailViewController = segue.destinationViewController as? UserSearchDetailViewController else {return}
             userSearchDetailViewController.transitioningDelegate = self
             userSearchDetailViewController.setupUserFromSearch = self.users[indexpath!.row]
         }
     }
     
-    func animationControllerForPresentViewController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source:UIViewController) ->UIViewControllerAnimatedTransitioning?{
+    
+    
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return self.customTransition
     }
-    
     
 }
