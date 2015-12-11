@@ -27,6 +27,7 @@ class RepoSeachViewController:UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         self.RepoSearchBar.delegate = self
         self.RepoSearchTableView.dataSource = self
+        self.RepoSearchTableView.delegate = self
         
     }
     
