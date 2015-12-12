@@ -59,13 +59,11 @@ class RepoSeachViewController:UIViewController, UITableViewDelegate, UITableView
         return cell
     }
     
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        //let indexpaths = self.RepoSearchTableView.indexPathForSelectedRow
-        //let indexpath = indexpaths!.row
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let repository = self.repositories[indexPath.row]
         
-        let safariViewController = SFSafariViewController(URL:repository.url, entersReaderIfAvailable: true)
+        let safariViewController = SFSafariViewController(URL:repository.url!, entersReaderIfAvailable: true)
         safariViewController.delegate = self
         self.presentViewController(safariViewController, animated: true, completion: nil)
     }
@@ -85,6 +83,31 @@ class RepoSeachViewController:UIViewController, UITableViewDelegate, UITableView
         self.getSearchRepo(searchTerm)
 
     }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        
+    }
+    
+    func searchBar(searchBar: UISearchBar, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        
+        print(text)
+        
+        if let searchText = searchBar.text{
+            
+            let isValid = String.isValidString(searchText)
+            print(isValid)
+            
+            if String.isValidString(text){
+                return true
+            }
+            else{
+                return false
+            }
+        }
+        return false
+    }
+    
+    
     
     
     class func identifier() -> String {
