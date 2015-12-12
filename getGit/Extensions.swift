@@ -14,8 +14,8 @@ extension String{
     static func isValidString(stringToCheck: String) ->Bool{
         
         do{
-            let regex = try NSRegularExpression(pattern: "[0-9a-zA-Z\\s]", options: NSRegularExpressionOptions.CaseInsensitive)
-            let matches = regex.numberOfMatchesInString(stringToCheck, options: NSMatchingOptions.ReportCompletion, range: NSRange.init(location: 0, length: stringToCheck.characters.count))
+            let regex = try NSRegularExpression(pattern: "[0-9a-zA-Z\n\\-]", options: NSRegularExpressionOptions.CaseInsensitive)
+            let matches = regex.numberOfMatchesInString(stringToCheck, options: NSMatchingOptions.ReportCompletion, range: NSRange(location: 0, length: stringToCheck.characters.count))
             
             if matches == stringToCheck.characters.count{
                 return true
