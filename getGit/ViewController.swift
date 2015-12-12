@@ -8,13 +8,62 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    @IBOutlet weak var tableView: UITableView!
 
+    
+    class func identifier() -> String {
+        return "ViewController"
+    }
+    
+    var repositories = [Repository]() {
+        didSet{
+            self.tableView.reloadData()
+        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.fetchRepository()
+    }
+    
+    func fetchRepository() {
+        GitHubService.GETRepositories { (success, repo) -> () in
+            print(repo)
+            self.repositories = repo
+            
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+         //GitHubService.createRepositoryWithName("Beep")
+       // GitHubService.searchForRepo("gramCracker")
+               
+        
+        self.fetchRepository()
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
     }
-
+    
+//MARK: TableView
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return repositories.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Repository Cell", forIndexPath: indexPath)
+        let repository = self.repositories[indexPath.row]
+        
+        cell.textLabel?.text = repository.name
+        cell.detailTextLabel?.text = repository.createdAt
+        
+        return cell
+    }
+    
+ 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -22,4 +71,9 @@ class ViewController: UIViewController {
 
 
 }
+//var repository: Repository {
+//        didSet{
+//             let repository = self.repository,name = repository.name
+//            }
+//        }
 
